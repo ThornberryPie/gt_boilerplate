@@ -6,58 +6,84 @@
 	width: 100%;
 	height: 100%;
 }
-@mixin border-image($size){
-	webkit-border-image: url(images/seperator.png) $size round;
-    -o-border-image: url(images/seperator.png) $size round;
-    border-image: url(images/seperator.png) $size round;
-}
-@mixin border-radius($radius) {
+@mixin border-radius($radius:4px) {
 	-webkit-border-radius: $radius;
     -moz-border-radius: $radius;
     -ms-border-radius: $radius;
      border-radius: $radius;
 }
-@mixin box-shadow($box-shadow) { //$horiz $vert $blur $spread $color $inset
-	box-shadow:$box-shadow;
-	-moz-box-shadow:$box-shadow;
-	-webkit-box-shadow:$box-shadow;
+@mixin box-shadow($box-shadow:3px 3px 4px $body-color) { //horiz vert blur spread color inset
+	box-shadow: $box-shadow;
+	-moz-box-shadow: $box-shadow;
+	-webkit-box-shadow: $box-shadow;
 }
-@mixin linear-gradient($color1, $color2) {
+@mixin box-shadow-inner($horizontal:0, $vertical:1px, $blur:2px, $alpha:0.4) {
+	-webkit-box-shadow: inset $horizontal $vertical $blur rgba(0, 0, 0, $alpha);
+	-moz-box-shadow: inset $horizontal $vertical $blur rgba(0, 0, 0, $alpha);
+	box-shadow: inset $horizontal $vertical $blur rgba(0, 0, 0, $alpha);
+}
+@mixin linear-gradient($color1:$white, $color2:$black) {
 	background: -webkit-linear-gradient($color1, $color2);
 	background: -o-linear-gradient($color1, $color2);
 	background: -moz-linear-gradient($color1, $color2);
 	background: linear-gradient($color1, $color2);
+}
+@mixin opacity($opacity:0.5) {
+	-moz-opacity: $opacity;
+	-khtml-opacity: $opacity;
+	-webkit-opacity: $opacity;
+	opacity: $opacity;
 }
 @mixin parallax($p:50% 50%){
 	background-attachment: fixed;
 	background-position: $p;
 	background-repeat: no-repeat;
 }
-@mixin placeholder-default($color){
+@mixin placeholder-default($color:$body-color){
 	::-webkit-input-placeholder{ color:$color;}
 	::-moz-placeholder{ color:$color;}
 	:-ms-input-placeholder{ color:$color;}
 }
-@mixin placeholder-light($color){
-	input:focus::-webkit-input-placeholder{ color:$color;}
-	input:focus::-moz-placeholder{ color:$color;}
-	input:focus:-ms-input-placeholder{ color:$color;}
-	textarea:focus::-webkit-input-placeholder{ color:$color;}
-	textarea:focus::-moz-placeholder{ color:$color;}
-	textarea:focus:-ms-input-placeholder{ color:$color;}
+@mixin placeholder-light($color:$body-color){
+	input:focus::-webkit-input-placeholder{ color: $color;}
+	input:focus::-moz-placeholder{ color: $color;}
+	input:focus:-ms-input-placeholder{ color: $color;}
+	textarea:focus::-webkit-input-placeholder{ color: $color;}
+	textarea:focus::-moz-placeholder{ color: $color;}
+	textarea:focus:-ms-input-placeholder{ color: $color;}
 }
-@mixin rotate($deg) {
+@mixin rotate($deg:5deg) {
 	-ms-transform: rotate($deg);
     -webkit-transform: rotate($deg);
     transform: rotate($deg);
 }
-@mixin text-shadow($color){
+@mixin scale($ratio:1.5){
+	-webkit-transform: scale($ratio);
+	-moz-transform: scale($ratio);
+	transform: scale($ratio);
+}
+@mixin text-shadow($color:$body-color){
 	text-shadow: 1px 1px $color;
 }
-@mixin transition($v) {
-	transition: $v;
-	-webkit-transition: $v;
-	-moz-transition: $v;
-	-o-transition: $v;
-	-ms-transition: $v;
+@mixin transform-none(){
+    -webkit-transform: none;
+    -moz-transform: none;
+    transform: none;
+}
+@mixin transition($duration:0.2s, $ease:ease-out) {
+	-webkit-transition: all $duration $ease;
+	-moz-transition: all $duration $ease;
+	transition: all $duration $ease;
+}
+@mixin transition-duration($duration:0.2s) {
+	-moz-transition-duration: $duration;
+	-webkit-transition-duration: $duration;
+	transition-duration: $duration;
+}
+@mixin translate($x:0, $y:0) {
+	-moz-transform: translate($x, $y);
+	-webkit-transform: translate($x, $y);
+	-o-transform: translate($x, $y);
+	-ms-transform: translate($x, $y);
+	transform: translate($x, $y);
 }
