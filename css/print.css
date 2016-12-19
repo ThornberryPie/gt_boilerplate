@@ -1,0 +1,18 @@
+body{ height:800px;}
+nav, article.work, .download, .contact ul span, .contact-bg{
+	display:none;
+}
+*{ background:none;}
+footer{ height:40px;}
+.home-right h3 span{ display:block;}
+.contact li label{ font-style:normal;}
+.contact li em, .intro span.intro2{ display:inline;}
+.contact li.con-em em:after {
+   content: " gdthornber@gmail.com";
+}
+.contact li.con-ph em:after {
+   content: " +64 (0)21 266 8135";
+}
+.contact li.con-fb em:after {
+   content: " facebook.com/thornberrypie";
+}
